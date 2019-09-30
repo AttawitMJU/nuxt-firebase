@@ -58,50 +58,7 @@ export default {
             console.log(this.price)
             console.log(this.productType)
             console.log(this.recommend)
-            // var citiesRef = db.collection('cities');
-
-            // var landmarks = Promise.all([
-            //     citiesRef.doc('SF').collection('landmarks').doc().set({
-            //         name: 'Golden Gate Bridge',
-            //         type: 'bridge'
-            //     }),
-            //     citiesRef.doc('SF').collection('landmarks').doc().set({
-            //         name: 'Legion of Honor',
-            //         type: 'museum'
-            //     }),
-            //     citiesRef.doc('LA').collection('landmarks').doc().set({
-            //         name: 'Griffith Park2',
-            //         type: 'park'
-            //     }),
-            //     citiesRef.doc('LA').collection('landmarks').doc().set({
-            //         name: 'The Getty2',
-            //         type: 'museum'
-            //     }),
-            //     citiesRef.doc('DC').collection('landmarks').doc().set({
-            //         name: 'Lincoln Memorial',
-            //         type: 'memorial'
-            //     }),
-            //     citiesRef.doc('DC').collection('landmarks').doc().set({
-            //         name: 'National Air and Space Museum',
-            //         type: 'museum'
-            //     }),
-            //     citiesRef.doc('TOK').collection('landmarks').doc().set({
-            //         name: 'Ueno Park',
-            //         type: 'park'
-            //     }),
-            //     citiesRef.doc('TOK').collection('landmarks').doc().set({
-            //         name: 'National Museum of Nature and Science',
-            //         type: 'museum'
-            //     }),
-            //     citiesRef.doc('BJ').collection('landmarks').doc().set({
-            //         name: 'Jingshan Park',
-            //         type: 'park'
-            //     }),
-            //     citiesRef.doc('BJ').collection('landmarks').doc().set({
-            //         name: 'Beijing Ancient Observatory',
-            //         type: 'museum'
-            //     })
-            // ]);
+           
             // ส่งข้อมูล --> Firbase
             // db.collection("product").add({
                 

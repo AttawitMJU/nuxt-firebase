@@ -102,6 +102,11 @@ export default {
                     icon: 'mdi-cart-plus',
                     title: 'Product List',
                     to: '/productList'
+                },
+                {
+                    icon: 'mdi-cart-plus',
+                    title: 'Dessert',
+                    to: '/dessert'
                 }
             ],
             miniVariant: false,

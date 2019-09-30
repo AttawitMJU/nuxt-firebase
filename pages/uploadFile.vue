@@ -47,7 +47,7 @@ export default {
     },
     methods: {
         upload() {
-            console.log('File: '+this.file.name);
+            // console.log('File: '+this.file.name);
             // export const imagesRef = storageRef.child('images/');
             var uploadTask = storageRef.child('images/' + this.file.name).put(this.file).then((snapshot) => {
                 console.log('Uploaded1 a blob or file!');
@@ -66,7 +66,10 @@ export default {
 
             // Find all the prefixes and items.
             listRef.listAll().then((res) => {
-
+                // res.prefixes.forEach(function (folderRef) {
+                //     // All the prefixes under listRef.
+                //     // You may call listAll() recursively on them.
+                // });
                 res.items.forEach((itemRef) => {
                     // console.log('res.items.');
                     // console.log(itemRef);
