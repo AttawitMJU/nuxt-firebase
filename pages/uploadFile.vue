@@ -1,10 +1,15 @@
 <template>
 <div>
     <v-file-input v-model="file" accept="image/*" label="File input" show-size></v-file-input>
+    
     <v-btn @click="upload()" color="primary">Upload</v-btn>
+
+
+
+
     <v-btn @click="listAllFile()" color="warning">List All Files</v-btn>
     <div class="d-flex justify-space-around flex-wrap pt-5">
-        <v-card max-width="344" class="mt-5" v-for="(item, index) in allFile" :key="index">
+        <v-card  v-for="(item, index) in allFile" :key="index" max-width="344" class="mt-5">
             <v-row class="py-4 pl-4">
                 <v-col class="shrink">
                     <v-img height="200" width="200" :src="item.downloadurl">
@@ -33,9 +38,7 @@
 </template>
 
 <script>
-import {
-    storageRef
-} from '~/plugins/firebaseDB.js'
+import {storageRef} from '~/plugins/firebaseDB.js'
 
 export default {
     data() {
@@ -48,8 +51,9 @@ export default {
     methods: {
         upload() {
             // console.log('File: '+this.file.name);
-            // export const imagesRef = storageRef.child('images/');
-            var uploadTask = storageRef.child('images/' + this.file.name).put(this.file).then((snapshot) => {
+            
+            var uploadTask = 
+            storageRef.child('images/' + this.file.name).put(this.file).then((snapshot) => {
                 console.log('Uploaded1 a blob or file!');
             }).catch((error) => {
                 console.log(error);
@@ -59,8 +63,8 @@ export default {
             //     console.log('Uploaded2 a blob or file!');
             // });
         },
-        listAllFile() {
 
+        listAllFile() {
             // Create a reference under which you want to list
             var listRef = storageRef.child('images/');
 
@@ -71,7 +75,6 @@ export default {
                 //     // You may call listAll() recursively on them.
                 // });
                 res.items.forEach((itemRef) => {
-                    // console.log('res.items.');
                     // console.log(itemRef);
                     console.log(itemRef.fullPath);
 
@@ -80,6 +83,8 @@ export default {
                     itemRef.getDownloadURL().then((url) => {
                         // Insert url into an <img> tag to "download"
                         console.log('URL: ' + url);
+                        // ****** url for download *******
+                        // url --> [ ,   ,   ,]
                         this.allFile.push({
                             fullPath: itemRef.fullPath,
                             downloadurl: url

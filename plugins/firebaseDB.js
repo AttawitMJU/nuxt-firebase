@@ -22,8 +22,11 @@ if (!firebase.apps.length) {
 
 export const db = firebase.firestore()
 // export const storage = firebase.storage();
+
 // Points to the root reference
 export const storageRef = firebase.storage().ref();
 
 // Points to 'images'
 export const  imagesRef = storageRef.child('images/');
+
+// export const  productsRef = storageRef.child('products/');

@@ -38,7 +38,7 @@
                                     <v-col cols="12" sm="6" md="4">
                                         <v-text-field v-model="editedItem.productname" label="Product name"></v-text-field>
                                     </v-col>
-                                    
+
                                     <v-col cols="12" sm="6" md="4">
                                         <v-text-field v-model="editedItem.price" label="Price ($)"></v-text-field>
                                     </v-col>
@@ -195,7 +195,14 @@ export default {
         },
         deleteItem(item) {
             const index = this.productList.indexOf(item)
-            confirm('Are you sure you want to delete this item?') && this.productList.splice(index, 1)
+            var del = confirm('Are you sure you want to delete this item?') && this.productList.splice(index, 1)
+            if (del) {
+                db.collection("product").doc(item.productid).delete().then(function () {
+                    console.log("Document successfully deleted!");
+                }).catch(function (error) {
+                    console.error("Error removing document: ", error);
+                });
+            }
         },
         close() {
             this.dialog = false
