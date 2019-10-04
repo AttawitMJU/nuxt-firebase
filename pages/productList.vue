@@ -80,9 +80,11 @@
                 mdi-delete-forever
             </v-icon>
         </template>
+
         <template v-slot:no-data>
             <v-btn color="primary" @click="getProduct()">Reset</v-btn>
         </template>
+
     </v-data-table>
 
 </div>
@@ -184,6 +186,7 @@ export default {
                 });
             });
         },
+
         getText(recommend) {
             if (recommend) return 'ok'
             else return '-'
@@ -191,15 +194,32 @@ export default {
         editItem(item) {
             this.editedIndex = this.productList.indexOf(item)
             this.editedItem = Object.assign({}, item)
+
+            db.collection("product").doc(item.productid).set({
+                    productid: item.productid,
+                    productname: item.productname,
+                    price: item.price,
+                    productType: item.productType,
+                    recommend: item.recommend
+                })
+                .then( (docRef) =>{
+                    // console.log("Document written with ID: ", docRef.id);
+                })
+                .catch( (error)=> {
+                    console.error("Error adding document: ", error);
+                });
+
             this.dialog = true
         },
         deleteItem(item) {
             const index = this.productList.indexOf(item)
+
             var del = confirm('Are you sure you want to delete this item?') && this.productList.splice(index, 1)
+
             if (del) {
-                db.collection("product").doc(item.productid).delete().then(function () {
+                db.collection("product").doc(item.productid).delete().then(() => {
                     console.log("Document successfully deleted!");
-                }).catch(function (error) {
+                }).catch((error) => {
                     console.error("Error removing document: ", error);
                 });
             }

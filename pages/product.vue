@@ -15,6 +15,9 @@
     <v-btn color="orange lighten-2" class="mr-4" @click="reset">
         Reset Form
     </v-btn>
+    <v-btn color="blue lighten-2" class="mr-4" @click="update">
+        Update
+    </v-btn>
 </v-form>
 </template>
 
@@ -61,7 +64,31 @@ export default {
            
             // ส่งข้อมูล --> Firbase
             // db.collection("product").add({
-                
+            db.collection("product").doc(this.productid).set({
+                    productid: this.productid,
+                    productname: this.productname,
+                    price: this.price,
+                    productType: this.productType,
+                    recommend: this.recommend
+                })
+                .then(function (docRef) {
+                    // console.log("Document written with ID: ", docRef.id);
+                })
+                .catch(function (error) {
+                    console.error("Error adding document: ", error);
+                });
+        },
+
+        update() {
+            // ทดสอบการรับข้อมูล
+            console.log(this.productid)
+            console.log(this.productname)
+            console.log(this.price)
+            console.log(this.productType)
+            console.log(this.recommend)
+           
+            // ส่งข้อมูล --> Firbase
+            // db.collection("product").add({
             db.collection("product").doc(this.productid).set({
                     productid: this.productid,
                     productname: this.productname,
