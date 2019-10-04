@@ -9,13 +9,7 @@ import 'firebase/storage'
 // Initialize Cloud Firestore through Firebase
 if (!firebase.apps.length) {
     const firebaseConfig = {
-        apiKey: "AIzaSyC069ETurJX_kNAv96I5_M14xCh5YXtuTw",
-        authDomain: "cs313fireproject.firebaseapp.com",
-        databaseURL: "https://cs313fireproject.firebaseio.com",
-        projectId: "cs313fireproject",
-        storageBucket: "cs313fireproject.appspot.com",
-        messagingSenderId: "55483468144",
-        appId: "1:55483468144:web:d78ff6ee939c72397fe7b5"
+        
     }
     firebase.initializeApp(firebaseConfig)
 }
